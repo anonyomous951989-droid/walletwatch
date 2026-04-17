@@ -1,0 +1,225 @@
+/* ============================================================
+   REGISTER PAGE — Modern Light + Creamy UI
+   ============================================================ */
+
+/* Full-page background */
+.register-content {
+  min-height: 100vh;
+  width: 100%;
+  padding: 40px 20px;
+  background: linear-gradient(145deg, #fffdf7 0%, #fef3d7 50%, #fde8aa 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Centred card area */
+.register-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 90vh;
+}
+
+/* Card */
+.register-form {
+  background: #ffffff;
+  padding: 40px 36px 32px;
+  border-radius: 20px;
+  box-shadow:
+    0 4px 20px rgba(90, 60, 20, 0.10),
+    0 1px 4px  rgba(90, 60, 20, 0.06);
+  border: 1px solid #ecdece;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Decorative top accent bar */
+.register-form::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff914d, #e8722a, #c95a18);
+  border-radius: 20px 20px 0 0;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Heading */
+.register-form h2,
+.register-form .header-name {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: #a04410;
+  letter-spacing: -0.02em;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #fde8b4;
+}
+
+/* Ant Design form labels */
+.register-form .ant-form-item-label > label {
+  font-weight: 600;
+  color: #3d3228;
+  font-size: 0.875rem;
+}
+
+/* Input fields */
+.register-form .pass-input,
+.register-form .ant-input,
+.register-form .ant-input-affix-wrapper {
+  border-radius: 10px !important;
+  border: 1.5px solid #ecdece !important;
+  background: #fffdf8 !important;
+  color: #1a1410 !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+.register-form .ant-input:focus,
+.register-form .ant-input-affix-wrapper:focus,
+.register-form .ant-input-affix-wrapper-focused {
+  border-color: #e8722a !important;
+  box-shadow: 0 0 0 3px rgba(232, 114, 42, 0.12) !important;
+  background: #ffffff !important;
+}
+
+/* Links */
+.register-form a {
+  color: #c95a18 !important;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.register-form a:hover {
+  color: #a04410 !important;
+  text-decoration: underline;
+}
+
+/* Terms links */
+.link1 {
+  color: #c95a18 !important;
+  text-decoration: underline;
+}
+
+.link1:hover {
+  color: #a04410 !important;
+  text-decoration: underline;
+}
+
+/* Text hint */
+.register-form .text {
+  color: #7a6a5a !important;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+/* Checkbox */
+.register-form .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #e8722a !important;
+  border-color: #e8722a !important;
+}
+
+/* Primary button */
+.register-form .btn {
+  margin-top: 14px;
+  width: 100%;
+  height: 44px;
+  background: linear-gradient(135deg, #e8722a 0%, #c95a18 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  box-shadow: 0 4px 14px rgba(201, 90, 24, 0.30);
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.register-form .btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #c95a18 0%, #a04410 100%);
+  box-shadow: 0 6px 20px rgba(201, 90, 24, 0.38);
+  transform: translateY(-1px);
+}
+
+.register-form .btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(201, 90, 24, 0.20);
+}
+
+.register-form .btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* "OR" divider */
+.register-form .line {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  margin: 28px 0;
+  background-color: #ecdece;
+}
+
+.register-form .line::before {
+  content: 'OR';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  color: #b5a898;
+  padding: 0 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+/* Google sign-up button */
+.register-page .login-with-google-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 11px 20px 11px 46px;
+  border: 1.5px solid #ecdece;
+  border-radius: 10px;
+  background-color: #ffffff;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+  background-repeat: no-repeat;
+  background-position: 16px center;
+  cursor: pointer;
+  color: #3d3228;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  box-shadow: 0 1px 4px rgba(90, 60, 20, 0.08);
+  transition: all 0.2s;
+}
+
+.register-page .login-with-google-btn:hover {
+  border-color: #ffd5a8;
+  background-color: #fffdf8;
+  box-shadow: 0 3px 10px rgba(90, 60, 20, 0.12);
+}
+
+.register-page .login-with-google-btn:active {
+  background-color: #fef3d7;
+}
+
+.register-page .login-with-google-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(232, 114, 42, 0.18);
+}

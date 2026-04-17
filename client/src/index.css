@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ============================================================
+   DESIGN TOKENS — Light & Creamy Modern Theme
+   ============================================================ */
+:root {
+  /* Cream / Warm palette */
+  --cream-50:  #fffdf7;
+  --cream-100: #fef9ed;
+  --cream-200: #fdf3d7;
+  --cream-300: #fbe8b4;
+  --cream-400: #f7d88a;
+  --cream-500: #f2c45a;
+
+  /* Primary accent — warm amber-brown */
+  --primary-50:  #fff8f0;
+  --primary-100: #ffecd6;
+  --primary-200: #ffd5a8;
+  --primary-300: #ffb870;
+  --primary-400: #ff914d;
+  --primary-500: #e8722a;
+  --primary-600: #c95a18;
+  --primary-700: #a04410;
+
+  /* Neutral text palette */
+  --text-900: #1a1410;
+  --text-700: #3d3228;
+  --text-500: #7a6a5a;
+  --text-300: #b5a898;
+  --text-100: #e8e0d5;
+
+  /* Surface colours */
+  --surface-white:  #ffffff;
+  --surface-cream:  #fef9ee;
+  --surface-warm:   #fdf3dc;
+  --surface-card:   #fffdf8;
+  --surface-border: #ecdece;
+
+  /* Status colours */
+  --success: #3cb37a;
+  --error:   #d94f43;
+  --warning: #e8a422;
+  --info:    #4788c7;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(90,60,20,.08), 0 1px 2px rgba(90,60,20,.06);
+  --shadow-md:  0 4px 12px rgba(90,60,20,.10), 0 2px 6px rgba(90,60,20,.07);
+  --shadow-lg:  0 10px 30px rgba(90,60,20,.12), 0 4px 10px rgba(90,60,20,.08);
+  --shadow-xl:  0 20px 50px rgba(90,60,20,.15);
+
+  /* Radius */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  18px;
+  --radius-xl:  24px;
+  --radius-full: 9999px;
+
+  /* Transition */
+  --transition: .2s cubic-bezier(.4,0,.2,1);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--surface-cream);
+  color: var(--text-700);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   TRANSACTION PAGE
+   ============================================================ */
+.transaction-page {
+  width: 100%;
+  min-height: calc(100vh - 64px);
+  background: var(--surface-cream);
+  padding-bottom: 40px;
+}
+
+.transaction-page .filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 24px;
+  background: var(--surface-white);
+  border-bottom: 1px solid var(--surface-border);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 24px;
+}
+
+.transaction-page .filters h6 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-500);
+  margin-bottom: 6px;
+}
+
+/* ============================================================
+   ANT DESIGN OVERRIDES — Switch icons & search
+   ============================================================ */
+.switch-icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  background: var(--surface-white);
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.switch-icons:hover {
+  border-color: var(--primary-400);
+}
+
+.search-bar {
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-sm);
+  padding: 3px 6px;
+  background: var(--surface-white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.search-bar:focus-within {
+  border-color: var(--primary-400);
+  box-shadow: 0 0 0 3px rgba(232,114,42,.12);
+}
+
+.anticon svg {
+  font-size: 16px;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.active-icon   { color: var(--primary-500); }
+.inactive-icon { color: var(--text-300); }
+
+.filter-tab .ant-select-selector {
+  width: 150px !important;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: linear-gradient(135deg, #2d2318 0%, #1a1410 100%);
+  color: var(--cream-200);
+  padding: 36px 40px;
+  margin-top: 60px;
+}
+
+.footer .text-center {
+  color: var(--cream-300);
+}
+
+.footer a {
+  text-decoration: none;
+  color: var(--cream-300);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background var(--transition);
+}
+
+.footer a:hover {
+  color: var(--primary-300);
+  background: rgba(255,255,255,.06);
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.responsive-btn {
+  background-color: transparent;
+  border-color: var(--surface-border);
+}
+
+.page-not-found {
+  font-weight: 700;
+  color: var(--text-700);
+}
+
+.email-sent-page {
+  padding-top: 40px;
+  margin-left: 40%;
+}
+
+/* Ant Design Table override */
+.ant-table {
+  border-radius: var(--radius-md) !important;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.ant-table-thead > tr > th {
+  background: var(--surface-warm) !important;
+  color: var(--text-700) !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid var(--surface-border) !important;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: var(--cream-100) !important;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media screen and (max-width: 1000px) {
+  .transaction-page { min-height: 140vh; }
+}
+
+@media screen and (max-width: 768px) {
+  .transaction-page .filters { gap: 10px; padding: 12px 16px; }
+}
+
+@media screen and (max-width: 500px) {
+  .transaction-page .filters { flex-direction: column; align-items: flex-start; }
+}

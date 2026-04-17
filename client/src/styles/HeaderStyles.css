@@ -1,0 +1,134 @@
+/* ============================================================
+   HEADER STYLES — Authenticated user dashboard navbar
+   ============================================================ */
+
+/* Navbar shell — same creamy gradient as public header */
+.navbar {
+  background: linear-gradient(90deg, #fffdf8 0%, #fef6e4 100%) !important;
+  border-bottom: 1px solid #ecdece;
+  box-shadow: 0 2px 12px rgba(90, 60, 20, 0.07);
+  padding: 0 20px;
+  height: 64px;
+}
+
+/* Brand */
+.navbar .navbar-brand {
+  color: #a04410 !important;
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: opacity 0.2s;
+}
+
+.navbar .navbar-brand:hover {
+  opacity: 0.85;
+}
+
+.navbar img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffd5a8;
+}
+
+/* Nav links */
+.nav-link {
+  color: #3d3228 !important;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 6px 12px !important;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-link:hover {
+  color: #c95a18 !important;
+  background: rgba(232, 114, 42, 0.08);
+}
+
+.navbar h6 {
+  margin: 0;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .nav-item {
+  margin-right: 4px;
+}
+
+/* Home link inside dashboard */
+.navbar .user-home-btn a {
+  color: #3d3228 !important;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+}
+
+.navbar .user-home-btn a:hover {
+  color: #c95a18 !important;
+  background: rgba(232, 114, 42, 0.08);
+}
+
+/* Ant Design Dropdown.Button in navbar */
+.navbar .ant-btn {
+  background: #ffecd6;
+  color: #a04410;
+  border: 1px solid #ffd5a8;
+  border-radius: 8px !important;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.navbar .ant-btn:hover {
+  background: #ffd5a8 !important;
+  color: #7a3a08 !important;
+  border-color: #ffb870 !important;
+}
+
+/* Hamburger toggler */
+.navbar-toggler {
+  border: 1px solid #ecdece !important;
+  border-radius: 8px !important;
+  padding: 6px 10px;
+  background-color: transparent;
+}
+
+.navbar-toggler-icon {
+  filter: invert(30%) sepia(40%) saturate(800%) hue-rotate(10deg);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media screen and (max-width: 768px) {
+  .navbar .navbar-brand { font-size: 1.2rem; }
+  .nav-link { font-size: 0.95rem; }
+  .navbar .nav-link .user-home-btn {
+    background: #fef3dc;
+    color: #3d3228;
+  }
+  .navbar .nav-link .user-home-btn:hover {
+    background: #fde8b4;
+    color: #a04410;
+  }
+  .navbar-collapse {
+    background: #fffdf8;
+    border-top: 1px solid #ecdece;
+    padding: 12px 16px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 8px 20px rgba(90, 60, 20, 0.08);
+    margin-top: 4px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .navbar .navbar-brand { font-size: 1.1rem; }
+  .nav-link { font-size: 0.9rem; }
+}

@@ -9,17 +9,23 @@ dotenv.config();
 
 const app = express();
 
+// Trust proxy (important for deployment)
+app.set("trust proxy", 1);
+
 // Middlewares
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(cors());
-app.set("trust proxy", 1);
+
+app.use(cors({
+  origin: process.env.CLIENT_URL,
+  credentials: true
+}));
 
 // Routes
 app.use(passport.initialize());
 app.use("/auth", GoogleAuthRoutes);
 app.use("/api/v1/users", require("./routes/userRoute"));
-app.use("/api/v1/transections", require("./routes/transectionRoutes"));
+app.use("/api/v1/transactions", require("./routes/transectionRoutes"));
 app.use("/api/v1/user-information", require("./routes/userInfoRoutes"));
 
 app.get("/", (req, res) => {

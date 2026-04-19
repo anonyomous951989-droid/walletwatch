@@ -194,7 +194,7 @@ const HomePage = () => {
     getAllTransactions();
   }, [getAllTransactions]);
 
-  //delete handler
+  //delete handlerr
   const handleDelete = async (record) => {
     Modal.confirm({
       title: "Are you sure you want to delete this transaction?",

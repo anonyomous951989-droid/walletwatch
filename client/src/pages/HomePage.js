@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import {
   Form,
   Input,
@@ -161,7 +161,7 @@ const HomePage = () => {
   ];
 
   //getall transactions
-  const getAllTransactions = async () => {
+  const getAllTransactions = useCallback(async () => {
     try {
       setTrasactionError(null);
       setLoading(true);
@@ -187,11 +187,12 @@ const HomePage = () => {
       setTrasactionError(getResponseError(error));
       message.error("Fetch Issue With Transactions...!");
     }
-  };
+  }, [frequency, selectedDate, type]);
+
   //useEffect Hook
   useEffect(() => {
     getAllTransactions();
-  }, [frequency, selectedDate, type, setAllTransection]);
+  }, [getAllTransactions]);
 
   //delete handler
   const handleDelete = async (record) => {

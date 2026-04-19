@@ -70,7 +70,7 @@ const HomePage = () => {
   const [editable, setEditable] = useState(null);
   const [trasactionError, setTrasactionError] = useState(null);
 
-  /* ── Computed stats ── */
+  /* ── Computed statss ── */
   const stats = useMemo(() => {
     const totalIncome = allTransection
       .filter((t) => t.type === "Income")
@@ -166,7 +166,7 @@ const HomePage = () => {
       setTrasactionError(null);
       setLoading(true);
       const res = await axios.post(
-        `${BASE_URL}/api/v1/transections/get-transection`,
+        `${BASE_URL}/api/v1/transactions/get-transection`,
         {
           frequency,
           selectedDate,
@@ -174,9 +174,8 @@ const HomePage = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("user")).token
-            }`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token
+              }`,
           },
         }
       );
@@ -203,7 +202,7 @@ const HomePage = () => {
       onOk: () => {
         deleteTransaction(record);
       },
-      onCancel: () => {},
+      onCancel: () => { },
     });
   };
 
@@ -212,13 +211,12 @@ const HomePage = () => {
       setLoading(true);
       const transactionId = record.transactionId;
       await axios.post(
-        `${BASE_URL}/api/v1/transections/delete-transection/${transactionId}`,
+        `${BASE_URL}/api/v1/transactions/delete-transection/${transactionId}`,
         {},
         {
           headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("user")).token
-            }`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token
+              }`,
           },
         }
       );
@@ -246,15 +244,14 @@ const HomePage = () => {
       if (editable) {
         const transactionId = editable.transactionId;
         await axios.post(
-          `${BASE_URL}/api/v1/transections/edit-transection/${transactionId}`,
+          `${BASE_URL}/api/v1/transactions/edit-transection/${transactionId}`,
           {
             ...values,
           },
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("user")).token
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token
+                }`,
             },
           }
         );
@@ -268,15 +265,14 @@ const HomePage = () => {
         });
       } else {
         await axios.post(
-          `${BASE_URL}/api/v1/transections/add-transection`,
+          `${BASE_URL}/api/v1/transactions/add-transection`,
           {
             ...values,
           },
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("user")).token
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token
+                }`,
             },
           }
         );
@@ -293,8 +289,10 @@ const HomePage = () => {
       setEditable(null);
     } catch (error) {
       setLoading(false);
-      setTrasactionError(getResponseError(error));
-      message.error("Please fill all fields");
+      console.error("Transaction API Error:", error.response?.data || error);
+      const errorMsg = error.response?.data?.message || error.response?.data?.error?.message || "Please fill all fields or check inputs";
+      setTrasactionError(errorMsg);
+      message.error(errorMsg);
     }
   };
 
@@ -544,18 +542,21 @@ const HomePage = () => {
             <Form
               layout="vertical"
               onFinish={handleSubmit}
-              initialValues={editable}
+              initialValues={editable ? {
+                ...editable,
+                date: editable.date ? moment(editable.date).format("YYYY-MM-DD") : undefined
+              } : {}}
             >
-              <Form.Item label="Amount" name="amount">
-                <Input type="text" required placeholder="e.g. 1500" />
+              <Form.Item label="Amount" name="amount" rules={[{ required: true, message: 'Please enter amount' }]}>
+                <Input type="number" placeholder="e.g. 1500" />
               </Form.Item>
-              <Form.Item label="Type" name="type">
+              <Form.Item label="Type" name="type" rules={[{ required: true, message: 'Please select type' }]}>
                 <Select placeholder="Select type">
                   <Select.Option value="Income">Income</Select.Option>
                   <Select.Option value="Expense">Expense</Select.Option>
                 </Select>
               </Form.Item>
-              <Form.Item label="Category" name="category">
+              <Form.Item label="Category" name="category" rules={[{ required: true, message: 'Please select category' }]}>
                 <Select placeholder="Select category">
                   <Select.Option value="Income in Salary">
                     Income in Salary
@@ -595,14 +596,14 @@ const HomePage = () => {
                   </Select.Option>
                 </Select>
               </Form.Item>
-              <Form.Item label="Date" name="date">
+              <Form.Item label="Date" name="date" rules={[{ required: true, message: 'Please select a date' }]}>
                 <Input type="date" />
               </Form.Item>
-              <Form.Item label="Reference" name="refrence">
-                <Input type="text" required placeholder="e.g. UPI / Cash" />
+              <Form.Item label="Reference" name="refrence" rules={[{ required: true, message: 'Please enter a reference' }]}>
+                <Input type="text" placeholder="e.g. UPI / Cash" />
               </Form.Item>
-              <Form.Item label="Description" name="description">
-                <Input type="text" required placeholder="Brief description" />
+              <Form.Item label="Description" name="description" rules={[{ required: true, message: 'Please enter description' }]}>
+                <Input type="text" placeholder="Brief description" />
               </Form.Item>
               <div className="modal-footer-btns">
                 <button

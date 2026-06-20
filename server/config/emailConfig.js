@@ -4,13 +4,15 @@ console.log("EMAIL_PORT:", process.env.EMAIL_PORT);
 console.log("EMAIL_USER:", process.env.EMAIL_USER);
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
-  host: process.env.EMAIL_HOST,
-  port: process.env.EMAIL_PORT,
-  secure: false,
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // TLS
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
+  },
+  tls: {
+    rejectUnauthorized: false,
   },
 });
 
